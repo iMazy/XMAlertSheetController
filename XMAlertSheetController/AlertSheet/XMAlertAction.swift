@@ -43,8 +43,6 @@ open class XMAlertAction: UIButton {
             self.setTitleColor(UIColor.red, for: .normal)
         case .cancel:
             self.setTitleColor(UIColor.darkGray, for: .normal)
-        default:
-            break
         }
         self.addSeparatorLine()
     }

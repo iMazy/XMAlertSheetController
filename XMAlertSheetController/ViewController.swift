@@ -14,10 +14,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        UIAlertAction(title: <#T##String?#>, style: .destructive) { (<#UIAlertAction#>) in
-            <#code#>
-        }
-        
     }
 
 
