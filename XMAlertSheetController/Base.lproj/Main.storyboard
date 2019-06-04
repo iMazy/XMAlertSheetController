@@ -26,6 +26,14 @@
                                     <action selector="showAlertSheet" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zsc-qz-WD3"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zj5-3K-KfM">
+                                <rect key="frame" x="141" y="183" width="93" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Show System"/>
+                                <connections>
+                                    <action selector="showSystemActionSheet" destination="BYZ-38-t0r" eventType="touchUpInside" id="cQe-gv-CMZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

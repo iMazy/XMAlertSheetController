@@ -21,7 +21,7 @@ open class XMAlertAction: UIButton {
     
     var actionStyle: XMAlertActionStyle = .cancel
     
-    lazy var separator = UIView()
+    lazy var partingLine = UIView()
     
     init() {
         super.init(frame: .zero)
@@ -62,14 +62,14 @@ extension XMAlertAction {
     }
     
     func addSeparatorLine() {
-        separator.backgroundColor = UIColor.lightGray
-        self.addSubview(separator)
+        partingLine.backgroundColor = #colorLiteral(red: 0.8589462638, green: 0.8585755229, blue: 0.8759493232, alpha: 1)
+        self.addSubview(partingLine)
         
         // Autolayout separator
-        separator.translatesAutoresizingMaskIntoConstraints = false
-        separator.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        separator.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor, constant: -15).isActive = true
-        separator.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor, constant: 15).isActive = true
-        separator.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+        partingLine.translatesAutoresizingMaskIntoConstraints = false
+        partingLine.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        partingLine.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor, constant: -15).isActive = true
+        partingLine.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor, constant: 15).isActive = true
+        partingLine.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
     }
 }

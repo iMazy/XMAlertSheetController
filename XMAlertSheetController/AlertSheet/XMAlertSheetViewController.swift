@@ -21,9 +21,10 @@ class XMAlertSheetViewController: UIViewController {
     
     @IBOutlet weak var alertActionStackViewHeightConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var alertTitleHeightConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var alertTitleHeightConstraint: NSLayoutConstraint!
     
     open var ALERT_STACK_VIEW_HEIGHT : CGFloat = 50
+    private var contentViewHeight: CGFloat = 0
     
     open var dismissWithBackgroudTouch = false // enable touch background to dismiss. Off by
     
@@ -31,6 +32,14 @@ class XMAlertSheetViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.alertView.transform = CGAffineTransform(translationX: 0, y: self.contentViewHeight)
+        UIView.animate(withDuration: 0.25) {
+            self.alertView.transform = CGAffineTransform.identity
+        }
     }
 
     convenience init(title: String? = nil, message: String? = nil) {
@@ -47,7 +56,16 @@ class XMAlertSheetViewController: UIViewController {
             alertTitle.text = title
         } else {
             alertTitle.isHidden = true
-            alertTitleHeightConstraint.constant = 0
+//            alertTitleHeightConstraint.constant = 0
+        }
+        
+        if let message = message, message.count > 0 {
+            alertMessage.isHidden = false
+            alertMessage.text = message
+        } else {
+            alertMessage.text = ""
+            alertMessage.isHidden = true
+//            alertTitleHeightConstraint.constant = 0
         }
         
         //Gesture recognizer for background dismiss with background touch
@@ -71,6 +89,8 @@ class XMAlertSheetViewController: UIViewController {
         }
         
         alertAction.addTarget(self, action: #selector(XMAlertSheetViewController.dismissAlertController(_:)), for: .touchUpInside)
+        
+        contentViewHeight = ALERT_STACK_VIEW_HEIGHT * CGFloat(alertActionStackView.arrangedSubviews.count)
     }
     
     @objc fileprivate func dismissAlertController(_ sender: XMAlertAction){
@@ -113,6 +133,7 @@ class XMAlertSheetViewController: UIViewController {
     private func animateDismiss() {
         UIView.animate(withDuration: 0.2, animations: {
             self.alertView.transform = CGAffineTransform(translationX: 0, y: self.alertView.bounds.height)
+            
         }, completion: { _ in
             self.dismiss(animated: true, completion: nil)
         })

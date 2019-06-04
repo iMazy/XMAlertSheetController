@@ -18,7 +18,10 @@ class ViewController: UIViewController {
 
     @IBAction func showAlertSheet() {
         
-        let alertSheet = XMAlertSheetViewController(title: "Main Title", message: "XMAlertSheetController is a great and customizable alert that can substitute UIAlertController")
+        let msg = "XMAlertSheetController is a great and customizable alert that can substitute UIAlertController sheet"
+        
+        let alertSheet = XMAlertSheetViewController(title: "Main title", message: msg)
+        
         alertSheet.addAction(XMAlertAction(title: "Allow", style: .destructive, action: {
             
         }))
@@ -30,5 +33,21 @@ class ViewController: UIViewController {
         self.present(alertSheet, animated: true, completion: nil)
     }
     
+    
+    @IBAction func showSystemActionSheet() {
+        showSystemAlertSheet()
+    }
+    
+    func showSystemAlertSheet() {
+        let alertVC = UIAlertController(title: "Main Title", message: "XMAlertSheetController is a great and customizable alert that can substitute UIAlertController sheet", preferredStyle: .actionSheet)
+        alertVC.addAction(UIAlertAction(title: "Allow", style: .destructive, handler: { (_) in
+            
+        }))
+        alertVC.addAction(UIAlertAction(title: "No Thanks", style: .default, handler: { (_) in
+            
+        }))
+        alertVC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
+    }
 }
 
