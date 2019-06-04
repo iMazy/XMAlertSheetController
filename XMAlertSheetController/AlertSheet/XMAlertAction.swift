@@ -20,7 +20,7 @@ open class XMAlertAction: UIButton {
     open var action: (() -> Void)?
     
     var actionStyle: XMAlertActionStyle = .cancel
-    
+    /// 分割线
     lazy var partingLine = UIView()
     
     init() {
@@ -44,7 +44,7 @@ open class XMAlertAction: UIButton {
         case .cancel:
             self.setTitleColor(UIColor.darkGray, for: .normal)
         }
-        self.addSeparatorLine()
+        self.addSeparatorLine(style: style)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -61,8 +61,9 @@ extension XMAlertAction {
         }
     }
     
-    func addSeparatorLine() {
-        partingLine.backgroundColor = #colorLiteral(red: 0.8589462638, green: 0.8585755229, blue: 0.8759493232, alpha: 1)
+    func addSeparatorLine(style: XMAlertActionStyle) {
+        
+        partingLine.backgroundColor = #colorLiteral(red: 0.9395350814, green: 0.9491689801, blue: 0.9619832635, alpha: 1)
         self.addSubview(partingLine)
         
         // Autolayout separator
@@ -70,6 +71,7 @@ extension XMAlertAction {
         partingLine.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         partingLine.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor, constant: -15).isActive = true
         partingLine.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor, constant: 15).isActive = true
-        partingLine.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+        let height: CGFloat = style == .cancel ? 8 : 0.5
+        partingLine.heightAnchor.constraint(equalToConstant: height).isActive = true
     }
 }

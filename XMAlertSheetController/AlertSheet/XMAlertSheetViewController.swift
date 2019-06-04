@@ -8,6 +8,22 @@
 
 import UIKit
 
+extension UIDevice {
+    
+    /// Has safe area
+    ///
+    /// with notch: 44.0 on iPhone X, XS, XS Max, XR.
+    ///
+    /// without notch: 20.0 on iPhone 8 on iOS 12+.
+    ///
+    static var hasSafeArea: Bool {
+        guard #available(iOS 11.0, *), let topPadding = UIApplication.shared.keyWindow?.safeAreaInsets.top, topPadding > 24 else {
+            return false
+        }
+        return true
+    }
+}
+
 class XMAlertSheetViewController: UIViewController {
 
     /// 主标题
@@ -18,21 +34,22 @@ class XMAlertSheetViewController: UIViewController {
     @IBOutlet weak var alertView: UIView!
     /// action stack view
     @IBOutlet weak var alertActionStackView: UIStackView!
-    
+    /// cancel stack view
+    @IBOutlet weak var cancelStackView: UIStackView!
+    /// alert action stack view height
     @IBOutlet weak var alertActionStackViewHeightConstraint: NSLayoutConstraint!
-    
-//    @IBOutlet weak var alertTitleHeightConstraint: NSLayoutConstraint!
-    
-    open var ALERT_STACK_VIEW_HEIGHT : CGFloat = 50
+    /// cancel action stack view height
+    @IBOutlet weak var cancelActionStackViewHeightConstraint: NSLayoutConstraint!
+    /// title and message stack view top Constraint
+    @IBOutlet weak var titleStackViewTopConstraint: NSLayoutConstraint!
+    /// title and message stack view bottom Constraint
+    @IBOutlet weak var titleStackViewBottomConstraint: NSLayoutConstraint!
+    /// action height
+    open var ALERT_STACK_VIEW_HEIGHT: CGFloat = 50
+    /// total content height
     private var contentViewHeight: CGFloat = 0
-    
+    /// 点击背景是否消失
     open var dismissWithBackgroudTouch = false // enable touch background to dismiss. Off by
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -56,19 +73,21 @@ class XMAlertSheetViewController: UIViewController {
             alertTitle.text = title
         } else {
             alertTitle.isHidden = true
-//            alertTitleHeightConstraint.constant = 0
         }
         
         if let message = message, message.count > 0 {
             alertMessage.isHidden = false
             alertMessage.text = message
         } else {
-            alertMessage.text = ""
             alertMessage.isHidden = true
-//            alertTitleHeightConstraint.constant = 0
         }
         
-        //Gesture recognizer for background dismiss with background touch
+        if alertTitle.isHidden == true && alertMessage.isHidden == true {
+            titleStackViewTopConstraint.constant  = 0
+            titleStackViewBottomConstraint.constant  = 0
+        }
+        
+        // Gesture recognizer for background dismiss with background touch
         let tapRecognizer: UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(dismissAlertControllerFromBackgroundTap))
         self.view.addGestureRecognizer(tapRecognizer)
         
@@ -78,19 +97,28 @@ class XMAlertSheetViewController: UIViewController {
     //MARK: - Actions
     @objc open func addAction(_ alertAction: XMAlertAction) {
         
-        alertActionStackView.addArrangedSubview(alertAction)
-        
+        if alertAction.actionStyle == .cancel {
+            if UIDevice.hasSafeArea { // has Safe Area
+                cancelActionStackViewHeightConstraint.constant = ALERT_STACK_VIEW_HEIGHT + 30
+                alertAction.titleEdgeInsets.top = -5
+            } else {
+                cancelActionStackViewHeightConstraint.constant = ALERT_STACK_VIEW_HEIGHT + 10
+                alertAction.titleEdgeInsets.top = 5
+            }
+            cancelStackView.addArrangedSubview(alertAction)
+        } else {
+            alertActionStackView.addArrangedSubview(alertAction)
+        }
+        // calcalate content height
         if alertActionStackView.arrangedSubviews.count >= 2 {
             alertActionStackViewHeightConstraint.constant = ALERT_STACK_VIEW_HEIGHT * CGFloat(alertActionStackView.arrangedSubviews.count)
-            alertActionStackView.axis = .vertical
         } else {
             alertActionStackViewHeightConstraint.constant = ALERT_STACK_VIEW_HEIGHT
-            alertActionStackView.axis = .vertical
         }
         
         alertAction.addTarget(self, action: #selector(XMAlertSheetViewController.dismissAlertController(_:)), for: .touchUpInside)
         
-        contentViewHeight = ALERT_STACK_VIEW_HEIGHT * CGFloat(alertActionStackView.arrangedSubviews.count)
+        contentViewHeight = ALERT_STACK_VIEW_HEIGHT * CGFloat(alertActionStackView.arrangedSubviews.count + cancelStackView.arrangedSubviews.count)
     }
     
     @objc fileprivate func dismissAlertController(_ sender: XMAlertAction){
@@ -139,3 +167,4 @@ class XMAlertSheetViewController: UIViewController {
         })
     }
 }
+
