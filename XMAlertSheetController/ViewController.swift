@@ -16,6 +16,19 @@ class ViewController: UIViewController {
         
     }
 
-
+    @IBAction func showAlertSheet() {
+        
+        let alertSheet = XMAlertSheetViewController(title: "Main Title", message: "XMAlertSheetController is a great and customizable alert that can substitute UIAlertController")
+        alertSheet.addAction(XMAlertAction(title: "Allow", style: .destructive, action: {
+            
+        }))
+        alertSheet.addAction(XMAlertAction(title: "No Thanks", style: .default, action: {
+            
+        }))
+        
+        alertSheet.addAction(XMAlertAction(title: "Cancel", style: .cancel))
+        self.present(alertSheet, animated: true, completion: nil)
+    }
+    
 }
 
