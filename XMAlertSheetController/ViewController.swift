@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         
         let msg = "XMAlertSheetController is a great and customizable alert that can substitute UIAlertController sheet"
         
-        let alertSheet = XMAlertSheetViewController(title: nil, message: msg)
+        let alertSheet = XMAlertSheetController(title: nil, message: msg)
         
         alertSheet.addAction(XMAlertAction(title: "Allow", style: .destructive, action: {
             

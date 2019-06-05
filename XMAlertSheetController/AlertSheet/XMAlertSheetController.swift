@@ -1,5 +1,5 @@
 //
-//  XMAlertSheetViewController.swift
+//  XMAlertSheetController.swift
 //  XMAlertSheetController
 //
 //  Created by Mazy on 2019/5/31.
@@ -24,7 +24,7 @@ extension UIDevice {
     }
 }
 
-class XMAlertSheetViewController: UIViewController {
+class XMAlertSheetController: UIViewController {
 
     /// 主标题
     @IBOutlet weak var alertTitle: UILabel!
@@ -116,7 +116,7 @@ class XMAlertSheetViewController: UIViewController {
             alertActionStackViewHeightConstraint.constant = ALERT_STACK_VIEW_HEIGHT
         }
         
-        alertAction.addTarget(self, action: #selector(XMAlertSheetViewController.dismissAlertController(_:)), for: .touchUpInside)
+        alertAction.addTarget(self, action: #selector(XMAlertSheetController.dismissAlertController(_:)), for: .touchUpInside)
         
         contentViewHeight = ALERT_STACK_VIEW_HEIGHT * CGFloat(alertActionStackView.arrangedSubviews.count + cancelStackView.arrangedSubviews.count)
     }
@@ -143,14 +143,14 @@ class XMAlertSheetViewController: UIViewController {
     @objc fileprivate func loadNibAlertController() -> [AnyObject]? {
         let podBundle = Bundle(for: self.classForCoder)
         
-        if let bundleURL = podBundle.url(forResource: "XMAlertSheetViewController", withExtension: "bundle"){
+        if let bundleURL = podBundle.url(forResource: "XMAlertSheetController", withExtension: "bundle"){
             
             if let bundle = Bundle(url: bundleURL) {
-                return bundle.loadNibNamed("XMAlertSheetViewController", owner: self, options: nil) as [AnyObject]?
+                return bundle.loadNibNamed("XMAlertSheetController", owner: self, options: nil) as [AnyObject]?
             } else {
                 assertionFailure("Could not load the bundle")
             }
-        } else if let nib = podBundle.loadNibNamed("XMAlertSheetViewController", owner: self, options: nil) as [AnyObject]?{
+        } else if let nib = podBundle.loadNibNamed("XMAlertSheetController", owner: self, options: nil) as [AnyObject]?{
             return nib
         } else {
             assertionFailure("Could not create a path to the bundle")
