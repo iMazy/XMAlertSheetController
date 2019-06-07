@@ -15,6 +15,7 @@
 		640444E922A154800001EED4 /* XMAlertSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640444E822A154800001EED4 /* XMAlertSheetController.swift */; };
 		640444ED22A154C20001EED4 /* XMAlertSheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 640444EC22A154C20001EED4 /* XMAlertSheetController.xib */; };
 		640444EF22A155030001EED4 /* XMAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640444EE22A155030001EED4 /* XMAlertAction.swift */; };
+		64EF7ECD22AA07E000C96D54 /* demo.png in Resources */ = {isa = PBXBuildFile; fileRef = 64EF7ECC22AA07E000C96D54 /* demo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		640444E822A154800001EED4 /* XMAlertSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMAlertSheetController.swift; sourceTree = "<group>"; };
 		640444EC22A154C20001EED4 /* XMAlertSheetController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XMAlertSheetController.xib; sourceTree = "<group>"; };
 		640444EE22A155030001EED4 /* XMAlertAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMAlertAction.swift; sourceTree = "<group>"; };
+		64EF7ECC22AA07E000C96D54 /* demo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				640444D722A1537D0001EED4 /* ViewController.swift */,
 				640444D922A1537D0001EED4 /* Main.storyboard */,
 				640444DC22A1537D0001EED4 /* Assets.xcassets */,
+				64EF7ECC22AA07E000C96D54 /* demo.png */,
 				640444DE22A1537D0001EED4 /* LaunchScreen.storyboard */,
 				640444E122A1537D0001EED4 /* Info.plist */,
 			);
@@ -140,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				640444ED22A154C20001EED4 /* XMAlertSheetController.xib in Resources */,
+				64EF7ECD22AA07E000C96D54 /* demo.png in Resources */,
 				640444E022A1537D0001EED4 /* LaunchScreen.storyboard in Resources */,
 				640444DD22A1537D0001EED4 /* Assets.xcassets in Resources */,
 				640444DB22A1537D0001EED4 /* Main.storyboard in Resources */,
