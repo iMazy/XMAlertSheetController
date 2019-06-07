@@ -10,44 +10,62 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    private var mainTitle: String?
+    private var descMessage: String?
+    
+    private var showDefaultAction: Bool = false
+    private var showDestructiveAction: Bool = false
+    private var showCancelAction: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+    }
+    
+    @IBAction func MainTitleFieldEditingChanged(_ sender: UITextField) {
+        mainTitle = sender.text
+    }
+    
+    @IBAction func descriptionFieldDditingChanged(_ sender: UITextField) {
+        descMessage = sender.text
+    }
+    
+    @IBAction func addDefaultAction(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        showDefaultAction = sender.isSelected
     }
 
+    @IBAction func addDestructiveAction(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        showDestructiveAction = sender.isSelected
+    }
+    
+    @IBAction func addCancelAction(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        showCancelAction = sender.isSelected
+    }
+    
     @IBAction func showAlertSheet() {
         
-        let msg = "XMAlertSheetController is a great and customizable alert that can substitute UIAlertController sheet"
+        let alertSheet = XMAlertSheetController(title: mainTitle, message: descMessage)
         
-        let alertSheet = XMAlertSheetController(title: nil, message: msg)
+        if showDefaultAction {
+            alertSheet.addAction(XMAlertAction(title: "No Thanks", style: .default, action: {
+                
+            }))
+        }
         
-        alertSheet.addAction(XMAlertAction(title: "Allow", style: .destructive, action: {
-            
-        }))
-        alertSheet.addAction(XMAlertAction(title: "No Thanks", style: .default, action: {
-            
-        }))
+        if showDestructiveAction {
+            alertSheet.addAction(XMAlertAction(title: "Allow", style: .destructive, action: {
+                
+            }))
+        }
         
-        alertSheet.addAction(XMAlertAction(title: "Cancel", style: .cancel))
+        if showCancelAction {
+            alertSheet.addAction(XMAlertAction(title: "Cancel", style: .cancel))
+        }
         self.present(alertSheet, animated: true, completion: nil)
     }
     
-    
-    @IBAction func showSystemActionSheet() {
-        showSystemAlertSheet()
-    }
-    
-    func showSystemAlertSheet() {
-        let alertVC = UIAlertController(title: "Main Title", message: "XMAlertSheetController is a great and customizable alert that can substitute UIAlertController sheet", preferredStyle: .actionSheet)
-        alertVC.addAction(UIAlertAction(title: "Allow", style: .destructive, handler: { (_) in
-            
-        }))
-        alertVC.addAction(UIAlertAction(title: "No Thanks", style: .default, handler: { (_) in
-            
-        }))
-        alertVC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(alertVC, animated: true, completion: nil)
-    }
 }
 

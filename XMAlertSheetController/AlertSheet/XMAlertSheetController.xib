@@ -30,7 +30,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uyy-KO-w4M">
-                    <rect key="frame" x="0.0" y="599" width="375" height="213"/>
+                    <rect key="frame" x="0.0" y="709" width="375" height="103"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Abv-Ce-970">
                             <rect key="frame" x="30" y="12" width="315" height="79"/>
@@ -57,15 +57,15 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="2YL-Gy-gve">
-                            <rect key="frame" x="0.0" y="103" width="375" height="50"/>
+                            <rect key="frame" x="0.0" y="103" width="375" height="0.0"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="QZ6-fj-APC"/>
+                                <constraint firstAttribute="height" id="QZ6-fj-APC"/>
                             </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cEq-QW-OoG">
-                            <rect key="frame" x="0.0" y="153" width="375" height="60"/>
+                            <rect key="frame" x="0.0" y="103" width="375" height="0.0"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="60" id="acQ-bE-Lj7"/>
+                                <constraint firstAttribute="height" id="acQ-bE-Lj7"/>
                             </constraints>
                         </stackView>
                     </subviews>
