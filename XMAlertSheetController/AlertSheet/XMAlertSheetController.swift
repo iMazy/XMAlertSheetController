@@ -24,7 +24,7 @@ extension UIDevice {
     }
 }
 
-class XMAlertSheetController: UIViewController {
+@objc open class XMAlertSheetController: UIViewController {
 
     /// 主标题
     @IBOutlet weak var alertTitle: UILabel!
@@ -51,7 +51,7 @@ class XMAlertSheetController: UIViewController {
     /// 点击背景是否消失
     open var dismissWithBackgroudTouch = false // enable touch background to dismiss. Off by
     
-    override func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.alertView.transform = CGAffineTransform(translationX: 0, y: self.contentViewHeight)
         UIView.animate(withDuration: 0.25) {

@@ -8,20 +8,20 @@
 
 import UIKit
 
-enum XMAlertActionStyle: Int {
+@objc public enum XMAlertActionStyle: Int {
     
     case `default`
     case cancel
     case destructive
 }
 
-open class XMAlertAction: UIButton {
+@objc open  class XMAlertAction: UIButton {
 
     open var action: (() -> Void)?
     
     var actionStyle: XMAlertActionStyle = .cancel
     /// 分割线
-    lazy var partingLine = UIView()
+    lazy open var partingLine = UIView()
     
     init() {
         super.init(frame: .zero)
@@ -52,7 +52,7 @@ open class XMAlertAction: UIButton {
     }
 }
 
-extension XMAlertAction {
+public extension XMAlertAction {
     
     @objc func tappedAction() {
         //Action need to be fired after alert dismiss
