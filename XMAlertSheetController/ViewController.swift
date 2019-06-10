@@ -66,6 +66,5 @@ class ViewController: UIViewController {
         }
         self.present(alertSheet, animated: true, completion: nil)
     }
-    
 }
 
