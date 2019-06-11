@@ -17,17 +17,17 @@ import UIKit
 
 @objc open  class XMAlertAction: UIButton {
 
-    open var action: (() -> Void)?
+    private var action: (() -> Void)?
     
-    var actionStyle: XMAlertActionStyle = .cancel
+    open var actionStyle: XMAlertActionStyle = .cancel
     /// 分割线
-    lazy open var partingLine = UIView()
+    open var partingLine = UIView()
     
     init() {
         super.init(frame: .zero)
     }
     
-    convenience init(title: String, style: XMAlertActionStyle, action: (() -> Void)? = nil) {
+     @objc public convenience init(title: String, style: XMAlertActionStyle, action: (() -> Void)? = nil) {
         self.init()
         self.action = action
         self.actionStyle = style
@@ -52,7 +52,7 @@ import UIKit
     }
 }
 
-public extension XMAlertAction {
+extension XMAlertAction {
     
     @objc func tappedAction() {
         //Action need to be fired after alert dismiss

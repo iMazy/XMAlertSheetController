@@ -59,7 +59,12 @@ extension UIDevice {
         }
     }
 
-    convenience init(title: String? = nil, message: String? = nil) {
+    /// Initialiser
+    ///
+    /// - Parameters:
+    ///   - title: 主题
+    ///   - message: 描述
+    @objc public  convenience init(title: String? = nil, message: String? = nil) {
         self.init()
         
         guard let nib = loadNibAlertController(), let unwrappedView = nib[0] as? UIView else { return }
@@ -121,11 +126,11 @@ extension UIDevice {
         contentViewHeight = ALERT_STACK_VIEW_HEIGHT * CGFloat(alertActionStackView.arrangedSubviews.count + cancelStackView.arrangedSubviews.count)
     }
     
-    @objc fileprivate func dismissAlertController(_ sender: XMAlertAction){
+    @objc private func dismissAlertController(_ sender: XMAlertAction){
         animateDismiss()
     }
     
-    @objc fileprivate func dismissAlertControllerFromBackgroundTap() {
+    @objc private func dismissAlertControllerFromBackgroundTap() {
         if !dismissWithBackgroudTouch {
             return
         }
@@ -133,14 +138,14 @@ extension UIDevice {
     }
     
     //MARK: - Customizations
-    @objc fileprivate func setShadowAlertView(){
+    @objc private func setShadowAlertView(){
         alertView.layer.masksToBounds = false
         alertView.layer.shadowOffset = CGSize(width: 0, height: 0)
         alertView.layer.shadowRadius = 3
         alertView.layer.shadowOpacity = 0.3
     }
     
-    @objc fileprivate func loadNibAlertController() -> [AnyObject]? {
+    @objc private func loadNibAlertController() -> [AnyObject]? {
         let podBundle = Bundle(for: self.classForCoder)
         
         if let bundleURL = podBundle.url(forResource: "XMAlertSheetController", withExtension: "bundle"){
@@ -158,10 +163,9 @@ extension UIDevice {
         return nil
     }
     
-    private func animateDismiss() {
+    @objc private func animateDismiss() {
         UIView.animate(withDuration: 0.2, animations: {
             self.alertView.transform = CGAffineTransform(translationX: 0, y: self.alertView.bounds.height)
-            
         }, completion: { _ in
             self.dismiss(animated: true, completion: nil)
         })

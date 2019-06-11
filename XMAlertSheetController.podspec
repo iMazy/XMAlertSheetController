@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "XMAlertSheetController"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "A alert sheet like sub type alertSheet of UIAlertViewController "
 
   s.description  = "XMAlertSheetController is a Swift library that provides a custom action sheet. It will give the users a fancy experience without taking pains coding the cool animation. Hokusai is compatible with Swift4."
