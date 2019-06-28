@@ -7,7 +7,7 @@ Hokusai is compatible with Swift4.
 
 ## Requirements
 
-- iOS 10.0+
+- iOS 9.0+
 - Swift 4.2+
 
 ## Installation
