@@ -5,6 +5,10 @@ XMAlertSheetController is a Swift library that provides a custom action sheet.
 It will give the users a fancy experience without taking pains coding the cool animation.  
 Hokusai is compatible with Swift4.
 
+## Requirements
+
+- iOS 10.0+
+- Swift 4.2+
 
 ## Installation
 
